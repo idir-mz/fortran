@@ -29,7 +29,7 @@ OBJDIR = obj
 # Get source files
 SOURCES:= $(wildcard $(SRCDIR)/*.$(EXT))
 OBJECTS:= $(SOURCES:$(SRCDIR)/%.$(EXT)=$(OBJDIR)/%.o)
-
+MODULE = 
 
 .PHONY: clean
 
@@ -46,19 +46,13 @@ build: $(MODULES) $(OBJECTS)
 	$(FC) $(OBJECTS) -o $(BINDIR)/$(TARGET)
 
 
-$(OBJECTS): $(OBJDIR)/%.o : $(SRCDIR)/%.$(EXT)
+$(OBJDIR)/%.o : $(SRCDIR)/%.$(EXT)
 	@mkdir -p $(@D)
 	$(FC) $(FFLAGS) -c $< -o $@
 
+%.mod : $(SRCDIR)/%.$(EXT)
+	$(FC) $(FFLAG) -c $< -o $@
 	
-
-zip:	
-	@echo
-	@echo Creating zip file
-	zip timing.zip $(BINDIR)*.txt $(BINDIR)*.mess
-
-
-
 
 clean:
 	rm -f  $(BINDIR)/*.exe $(BINDIR)*.out 
