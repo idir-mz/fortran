@@ -29,7 +29,7 @@ OBJDIR = obj
 # Get source files
 SOURCES:= $(wildcard $(SRCDIR)/*.$(EXT))
 OBJECTS:= $(SOURCES:$(SRCDIR)/%.$(EXT)=$(OBJDIR)/%.o)
-MODULE = 
+MODULE = print_matrix_mod.mod
 
 .PHONY: clean
 
