@@ -40,8 +40,6 @@ contains
         write(*,col_fmt) ((A(i,j), j=1,n), i=1,m)
         write(*,*)
 
-
-
     end subroutine print_dmatrix
 
     
